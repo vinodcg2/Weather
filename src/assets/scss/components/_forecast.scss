@@ -33,9 +33,18 @@
     &__temp {
         span {
             margin-top: 20px;
-            padding: 10px;
+            padding: 10px 20px;
             display: inline-block;
+            color: $wBlack;
             border: 1px solid $wBorderGray;
+            &:first-of-type {
+                border-top-left-radius: 20px;
+                border-bottom-left-radius: 20px;
+            }
+            &:last-of-type {
+                border-top-right-radius: 20px;
+                border-bottom-right-radius: 20px;
+            }
         }
     }
 

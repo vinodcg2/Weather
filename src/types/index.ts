@@ -4,6 +4,10 @@ export interface OptionTypes {
     lat: number;
     lon?: number;
 }
+export interface LonLat {
+    lat: number | undefined; 
+    lon: number| undefined;
+}
 
 export interface ForecastType {
     name: string;

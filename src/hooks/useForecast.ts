@@ -1,7 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import { OptionTypes, ForecastType } from "../types";
-
-const Keya = 'e5b128ed694209a7b00916f1fbf823ba';
+import { OptionTypes, ForecastType, LonLat } from "../types";
+import { SellingService } from "../services/weatherService";
 
 const useForecast = () => {
     const [locInpt, setLocInpt] = useState<string>('');
@@ -18,36 +17,42 @@ const useForecast = () => {
   
     const getLocationCordAPI = (value: string) => {
       const weatherValue = value.trim();
-      fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${weatherValue}&limit=5&appid=${Keya}`)
-        .then(res => res.json())
-        .then(data => setlocOptions(data))
+      SellingService.getCordinate(weatherValue)
+      .then(res => {
+        console.log('res:', res)
+        const data = res.data;
+        setlocOptions(data)
+      })
+      .catch(error => {
+        console.warn(error) 
+      });
     }
   
-    const getWeatherAPI = (lonLat: { lat: number; lon: number|undefined; }) => {
-      const {lat, lon} = lonLat;
-      
-      fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${Keya}&cnt=40`,)
-        .then(res => res.json())
-        .then((data) => {
-            const dataList = data.list;
-            let dailyWeather = [];
-            if(dataList) {
-              for (var i = 0; i < dataList.length; i+=8) {
-                dailyWeather.push(dataList[i]);
-              }
+    const getWeatherAPI = (lonLat: LonLat) => {
+      SellingService.getForecast(lonLat)
+        .then(res => {
+          const data = res.data;
+          const dataList = data.list;
+          let dailyWeather = [];
+          if(dataList) {
+            for (var i = 0; i < dataList.length; i+=8) {
+              dailyWeather.push(dataList[i]);
             }
-            const foreCastData = {
-              ...data.city,
-              list: dailyWeather
           }
-            console.log('data.list:', dailyWeather)
-            setForecast(foreCastData)
+          const foreCastData = {
+            ...data.city,
+            list: dailyWeather
+          }
+          setForecast(foreCastData)
+
         })
+        .catch(error => {
+          console.warn(error) 
+        });
     }
   
     const onSelectLoc = (optItem: OptionTypes) => {
       setSub(optItem);
-      console.log(optItem);
       const lonLat = {
         lat: optItem.lat,
         lon: optItem.lon
