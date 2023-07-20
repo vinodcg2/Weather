@@ -1,0 +1,60 @@
+.weather {
+    color: #ccc;
+    width: 100%;
+    margin-top: 50px;
+    
+    &__search-bar {
+        input {
+            padding: 10px 15px 10px 0;
+            border: 0;
+            background-color: transparent;
+            border-bottom: 1px solid $wBorderGray;
+            width: 100%;
+            font-size: 36px;
+            @include transition(2s ease-out);
+
+            &:focus {
+                outline: none;
+                border-color: $wSkyBlue;
+
+            }
+        }
+        button {
+            height: 40px;
+            min-width: 100px;
+            width: 20%;
+        }
+    }
+
+    &--list-group {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+            padding: 5px;
+            color: $wBlack;
+            background-color: $wWhite;
+            border-bottom: 1px solid $wBorderGray;
+            font-size: 18px;
+            padding: 15px 10px 10px;
+            cursor: pointer;
+            animation: slideInFromLeft 0.25s ease-out 0s 1;
+            @include transition(ease-in-out all 0.25s);
+            &:hover {
+                background-color: $wSkyBlue;
+                color: $wWhite;
+            }
+        }
+    }
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}

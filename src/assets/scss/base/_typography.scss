@@ -1,0 +1,29 @@
+@font-face {
+    font-family: 'MontserratAlternatesRegular';
+    src: url('../../fonts/MontserratAlternatesRegular.eot');
+    src: url('../../fonts/MontserratAlternatesRegular.eot') format('embedded-opentype'),
+         url('../../fonts/MontserratAlternatesRegular.woff2') format('woff2'),
+         url('../../fonts/MontserratAlternatesRegular.woff') format('woff'),
+         url('../../fonts/MontserratAlternatesRegular.ttf') format('truetype'),
+         url('../../fonts/MontserratAlternatesRegular.svg#MontserratAlternatesRegular') format('svg');
+}
+
+h1 {
+    font-size: 68px;
+  }
+  h2 {
+    font-size: 48px;
+  }
+  h3 {
+    font-size: 40px;
+  }
+  h4 {
+    font-size: 32px;
+  }
+  h5 {
+    font-size: 24px;
+    margin: 0 0 10px;
+  }
+  h6 {
+    font-size: 14px;
+  }

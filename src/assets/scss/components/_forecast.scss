@@ -1,0 +1,43 @@
+.forecast {
+    // box-shadow: 0px 2px 15px $wSkyBlue, 0px 2px 15px #fff;
+    border-radius: 20px;
+    margin-top: 20px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+
+    &__city {
+        font-size: 24px;
+        color: $wBlack;
+        @include opacity(0.3);
+    }
+
+    h4 {
+        display: block;
+        color: $wSkyBlue;
+        font-size: 80px;
+        sup {
+            font-size: 30px;
+        }
+    }
+
+    figure {
+        figcaption {
+            text-align: center;
+            color: $wSkyBlue;
+            font-size: 18px;
+        }
+    }
+
+    &__temp {
+        span {
+            margin-top: 20px;
+            padding: 10px;
+            display: inline-block;
+            border: 1px solid $wBorderGray;
+        }
+    }
+
+
+}
